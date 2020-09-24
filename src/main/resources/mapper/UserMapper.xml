@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tan.dao.UserMapper">
+
+    <resultMap id="userMap" type="user">
+        <result property="passwordSalt" column="password_salt" />
+    </resultMap>
+
+    <select id="queryUserByUsername" resultMap="userMap">
+        select * from tb_users where username=#{username};
+    </select>
+
+    <insert id="insertOne">
+        insert into tb_users(username,password,salt) values(#{username},#{password},#{salt});
+    </insert>
+</mapper>
